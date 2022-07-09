@@ -1,0 +1,60 @@
+PREFIX : <https://repositoriodatasharingfapesp.uspdigital.usp.br/>
+PREFIX datashIdAt: <https://repositoriodatasharingfapesp.uspdigital.usp.br/graph>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?id ?MUNICIPIO
+WHERE { ?x :Id  ?id .
+	?x datashIdAt:MUNICIPIO ?MUNICIPIO  .
+	FILTER regex (?MUNICIPIO, "sao paulo", "i")
+	}
+	
+
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dtsh: <http://www.semanticweb.org/datasharingbr#>
+
+	SELECT DISTINCT ?observation
+	WHERE {
+		?x dtsh:hasObservation ?observation
+	}
+
+
+			
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dtsh: <http://www.semanticweb.org/datasharingbr#>
+
+SELECT DISTINCT ?concept ?vocab
+
+WHERE {
+	 ?x a dtsh:Specimen .
+	 ?x schema:codeValue ?concept .
+	 ?x dtsh:codeSystem ?vocab
+	}
+	
+	
+PREFIX schema: <http://schema.org/>
+PREFIX : <http://www.semanticweb.org/datasharingbr#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+		
+select ?s ?caresite ?codevalue ?codesystem ?value
+where { 
+    ?s rdf:type :Measurement;
+       :hasPatient :123456789;
+       :hasCareSite ?caresite;
+       :hasObservation ?observation;
+       schema:value ?value.
+    ?o schema:codeValue ?codevalue;
+       schema:codeSystem ?codesystem
+    
+} limit 100
+
+
+
+
