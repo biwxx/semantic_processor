@@ -16,10 +16,10 @@ def main():
 	dataset = Dataset()
 	graph = dataset.graph(graph_uri)
 
-	dataset.default_context.parse('/home/biwxx/Documents/IWS/T_final/dados/tbox/ontology_pacientes.ttl',format='turtle')
+	dataset.default_context.parse('/T/dados/tbox/ontology_pacientes.ttl',format='turtle')
 	dataset.bind('datashIdAt', repoDtSh)
 
-	with open('/home/biwxx/Documents/IWS/T_final/dados/tabelas/HC_PACIENTES_1.csv', mode='r') as csv_file:
+	with open('/T/dados/tabelas/HC_PACIENTES_1.csv', mode='r') as csv_file:
 		csv_reader = csv.DictReader(csv_file,delimiter='|')
 		line_count = 0
 		for row in csv_reader:
@@ -42,7 +42,7 @@ def main():
 		print(f'Processadas {line_count} linhas.')
 	csv_file.close()
 
-	with open('/home/biwxx/Documents/IWS/T_final/dados/tabelas/exames_test.csv', mode='r') as csv_file:
+	with open('/T/dados/tabelas/exames_test.csv', mode='r') as csv_file:
 			csv_reader = csv.DictReader(csv_file,delimiter='|')
 			line_count = 0
 			for row in csv_reader:
@@ -52,7 +52,7 @@ def main():
 					graph.add(( URIRef (graph_uri+row["ID_PACIENTE"]), DATA.IdAtendimento, Literal(row["ID_aTENDIMENTO"],datatype = XSD.string)))
 					line_count += 1
 	csv_file.close()
-	graph.serialize(destination='/home/biwxx/Documents/IWS/T_final/dados/abox/pacientes.ttl',format='turtle')
+	graph.serialize(destination='/T/dados/abox/pacientes.ttl',format='turtle')
 	#print(graph.serialize(format='turtle').decode('UTF-8'))
 
 
