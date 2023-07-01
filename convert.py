@@ -35,8 +35,8 @@ def sample():
 	g.close()
 
 def sampleCSV ():
-	f = open('/home/biwxx/Documents/IWS/T_final/dados/tabelas/EINSTEIN_Exames_2_SAMPLE.csv', mode ='w')
-	g = open('/home/biwxx/Documents/IWS/T_final/dados/tabelas/EINSTEIN_Exames_2.csv', mode='r')
+	f = open('/T/dados/tabelas/EINSTEIN_Exames_2_SAMPLE.csv', mode ='w')
+	g = open('/T/dados/tabelas/EINSTEIN_Exames_2.csv', mode='r')
 
 	lines = g.readlines()
 	count = 0
@@ -60,8 +60,8 @@ def main():
 	#flattened = jsonld.flatten(dados)
 	#normalized = jsonld.normalize(flattened, {'algorithm': 'URDNA2015', 'format': 'application/n-quads'})
 	#g = jsonld.to_rdf(dados)
-	#COW(mode='build', files=[os.path.join('/home/biwxx/Documents/IWS/T_final/dados/tabelas/', filename)], base="https://repositoriodatasharingfapesp.uspdigital.usp.br/", delimiter='|', quotechar='\"')
-	#OW(mode='convert', files=[os.path.join('/home/biwxx/Documents/IWS/T_final/dados/tabelas/', filename)] , delimiter='|', quotechar='\"', processes=4, chunksize=100, base='https://repositoriodatasharingfapesp.uspdigital.usp.br/')
+	#COW(mode='build', files=[os.path.join('T/dados/tabelas/', filename)], base="https://repositoriodatasharingfapesp.uspdigital.usp.br/", delimiter='|', quotechar='\"')
+	#OW(mode='convert', files=[os.path.join('/Tdados/tabelas/', filename)] , delimiter='|', quotechar='\"', processes=4, chunksize=100, base='https://repositoriodatasharingfapesp.uspdigital.usp.br/')
 
 	#for x in sample_metadata["tableSchema"]["columns"]:
 	#	print (x["@id"])
@@ -80,7 +80,7 @@ def main():
 		#c.convert()
 
 	g = ConjunctiveGraph()
-	g.parse("/home/biwxx/Documents/IWS/T_final/dados/tbox/EINSTEIN_Exames_2_SAMPLE.csv-metadata.json",format="json-ld")
+	g.parse("/T/dados/tbox/EINSTEIN_Exames_2_SAMPLE.csv-metadata.json",format="json-ld")
 	print (len(g))
 
 	G = rdflib_to_networkx_multidigraph(g,edge_attrs=lambda s, p, o :{})
