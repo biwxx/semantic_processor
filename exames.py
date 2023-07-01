@@ -16,11 +16,11 @@ def create():
 	dataset = Dataset()
 	graph = dataset.graph(graph_uri)
 
-	dataset.default_context.parse('/home/biwxx/Documents/IWS/T_final/dados/tbox/ontology_pacientes.ttl',format='turtle')
+	dataset.default_context.parse('/T/dados/tbox/ontology_pacientes.ttl',format='turtle')
 	dataset.bind('datashIdAt', repoDtSh)
 
 
-	with open('/home/biwxx/Documents/IWS/T_final/dados/tabelas/exames_test.csv', mode='r') as csv_file:
+	with open('/T/dados/tabelas/exames_test.csv', mode='r') as csv_file:
 		csv_reader = csv.DictReader(csv_file,delimiter='|')
 		line_count = 0
 		id_exame = 0
